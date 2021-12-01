@@ -7,6 +7,7 @@ const {
   handleError,
   validateUserId,
   validateUser,
+  validatePost,
 } = require('../middleware/middleware')
 // The middleware functions also need to be required
 
