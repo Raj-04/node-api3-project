@@ -6,6 +6,7 @@ const Posts = require('../posts/posts-model')
 const {
   handleError,
   validateUserId,
+  validateUser,
 } = require('../middleware/middleware')
 // The middleware functions also need to be required
 
