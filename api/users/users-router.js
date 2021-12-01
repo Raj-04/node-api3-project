@@ -13,8 +13,12 @@ const {
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  // RETURN AN ARRAY WITH ALL THE USERS
+router.get('/', (req, res, next) => {
+  Users.get()
+    .then((users) => {
+      res.status(200).json(users)
+    })
+    .catch(next)
 });
 
 router.get('/:id', (req, res) => {
