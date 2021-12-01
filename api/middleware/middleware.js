@@ -1,5 +1,7 @@
+const Users = require('./../users/users-model')
+
 function logger(req, res, next) {
-  // DO YOUR MAGIC
+  console.log(`${req.method} request for ${req.url} at ${Date()}`)
 }
 
 function validateUserId(req, res, next) {
@@ -15,3 +17,7 @@ function validatePost(req, res, next) {
 }
 
 // do not forget to expose these functions to other modules
+
+module.exports = {
+  logger,
+}
