@@ -13,7 +13,19 @@ function handleError(err, req, res, next) {
 }
 
 function validateUserId(req, res, next) {
-  // DO YOUR MAGIC
+  Users.getById(req.params.id)
+    .then(potentialUser => {
+      if(potentialUser) {
+        req.user = potentialUser
+        next()
+      } else {
+        next({
+          status: 404,
+          message: 'User not found'
+        })
+      }
+    })
+    .catch(next)
 }
 
 function validateUser(req, res, next) {
@@ -29,4 +41,5 @@ function validatePost(req, res, next) {
 module.exports = {
   logger,
   handleError,
+  validateUserId,
 }
