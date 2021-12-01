@@ -2,6 +2,14 @@ const Users = require('./../users/users-model')
 
 function logger(req, res, next) {
   console.log(`${req.method} request for ${req.url} at ${Date()}`)
+  next()
+}
+
+function handleError(err, req, res, next) {
+  res.status(err.status || 500).json({
+    message: err.message,
+    prodMessage: 'Something went really wrong!',
+  })
 }
 
 function validateUserId(req, res, next) {
@@ -20,4 +28,5 @@ function validatePost(req, res, next) {
 
 module.exports = {
   logger,
+  handleError,
 }

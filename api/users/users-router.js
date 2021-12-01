@@ -1,6 +1,12 @@
 const express = require('express');
 
 // You will need `users-model.js` and `posts-model.js` both
+const Users = require('./users-model')
+const Posts = require('../posts/posts-model')
+const {
+  handleError,
+
+} = require('../middleware/middleware')
 // The middleware functions also need to be required
 
 const router = express.Router();
@@ -40,6 +46,8 @@ router.post('/:id/posts', (req, res) => {
   // this needs a middleware to verify user id
   // and another middleware to check that the request body is valid
 });
+
+router.use(handleError)
 
 // do not forget to export the router
 module.exports = router
